@@ -3,66 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Emily</title>
-
-  <!-- Critical viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
   <meta name="theme-color" content="#0f172a">
-
-  <!-- FORCE RENDER STYLE -->
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #0f172a;
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-    }
-    .card {
-      padding: 24px;
-      border-radius: 12px;
-      background: #111827;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      max-width: 320px;
-      width: 100%;
-    }
-    h1 {
-      margin: 0 0 12px;
-      font-size: 32px;
-    }
-    p {
-      margin: 0;
-      opacity: 0.85;
-      font-size: 14px;
-    }
-    .status {
-      margin-top: 16px;
-      font-size: 12px;
-      color: #22c55e;
-    }
-  </style>
 </head>
-
 <body>
-  <div class="card">
-    <h1>Emily</h1>
-    <p>Personal AI Interface</p>
-    <div class="status">STATUS: ONLINE ✅</div>
-  </div>
 
-  <!-- Minimal JS (safe) -->
-  <script>
-    console.log("Emily loaded successfully");
-  </script>
+<header>
+  <h1>Emily</h1>
+  <span class="status">ONLINE</span>
+</header>
+
+<main>
+  <section id="chat"></section>
+
+  <div class="input-bar">
+    <input id="userInput" placeholder="Talk to Emily..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</main>
+
+<footer>
+  <button onclick="togglePanel()">AGI Panel</button>
+</footer>
+
+<div id="panel" class="hidden">
+  <h2>AGI Control Panel</h2>
+  <ul>
+    <li>🧠 Memory: Active</li>
+    <li>⚙️ Decision Core: Ready</li>
+    <li>🚀 Executor: Idle</li>
+  </ul>
+</div>
+
+<script src="app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+</script>
 </body>
 </html>
-
